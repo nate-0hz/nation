@@ -7,7 +7,7 @@ export const Heading = () => {
   return (
     <div className="max-w-3xl space-y-4 font-sans">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-relaxed">
-        Everything about you, together. We are <span className="underline">nation</span>
+        Everything about you, together. You are <span className="underline">nation</span>
       </h1>
       <h3 className="text-base sm:text-xl md:text-2xl font-medium">
         nation brings all your thoughts together, without a monthly fee.
