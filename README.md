@@ -20,4 +20,12 @@ Initial inspiration from https://www.youtube.com/watch?v=0OaDyjB9Ib8
 - TypeScript
 - React, including Server Components
 - TailWind CSS
-- Convex DB, which I may convert to Mongo
+- Convex, for, backend and DB, which I may convert
+- Clerk, for authentication, which also may be converted
+
+
+Convex:
+- npx convex dev
+
+- next.js server:
+npx run dev
