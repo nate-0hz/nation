@@ -24,8 +24,8 @@ Initial inspiration from https://www.youtube.com/watch?v=0OaDyjB9Ib8
 - Clerk, for authentication, which also may be converted
 
 
-Convex:
-- npx convex dev
+- Convex:
+npx convex dev
 
 - next.js server:
 npx run dev
