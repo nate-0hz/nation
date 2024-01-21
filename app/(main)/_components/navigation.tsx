@@ -9,6 +9,7 @@ import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 import { cn } from "@/lib/utils";
+import { UserItem } from "./user-item";
 
 
 export const Navigation = () => {
@@ -110,7 +111,7 @@ export const Navigation = () => {
           isMobile && "w-0"
         )}
       >
-        // allows the chevrons on the sidebar to become visible on hover
+        {/* // allows the chevrons on the sidebar to become visible on hover */}
         <div
         onClick={collapse}
           title="Draggable Area"
@@ -122,7 +123,7 @@ export const Navigation = () => {
         >
           <ChevronsLeft className="h-6 w-6" />
         </div>
-        <p>Action items</p>
+        <UserItem />
         <div className="mt-4">
           <p>Documents</p>
         </div>
