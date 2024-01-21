@@ -6,13 +6,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 No, no, no. Ah hah. No, it definitely isn't.
 
-This is a personal tinker project I'm using to learn Next.js, TypeScript and TailWind CSS.
-
-It does kind of look familiar though, doesn't it?
+This is a personal tinker project I'm using to expand React knowledge, and to learn Next.js, TypeScript and TailWind CSS. It is a work in progress and is in active development.
 
 ## Inspiration
 
-Initial inspiration from https://www.youtube.com/watch?v=0OaDyjB9Ib8
+Initial inspiration from https://www.youtube.com/watch?v=0OaDyjB9Ib8, and I have plans to customise, once I have furthered my skills.
 
 ## Tech Stack
 
@@ -20,9 +18,11 @@ Initial inspiration from https://www.youtube.com/watch?v=0OaDyjB9Ib8
 - TypeScript
 - React, including Server Components
 - TailWind CSS
-- Convex, for, backend and DB, which I may convert
-- Clerk, for authentication, which also may be converted
+- Convex, for, backend and DB
+- Clerk, for authentication
+- Shadcn/ui component library
 
+## Reminders for me:
 
 - Convex:
 npx convex dev
