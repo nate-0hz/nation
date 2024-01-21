@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +17,7 @@ interface ItemProps {
   label: string;
   onClick: () => void;
   icon: LucideIcon;
+  expanded?: boolean; // Add the expanded property
 };
 
 export const Item = ({
@@ -28,7 +30,7 @@ export const Item = ({
   isSearch,
   level = 0,
   onExpand,
-  expanded,
+  expanded, // Use the expanded property
 }: ItemProps) => {
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
 
@@ -75,6 +77,20 @@ export const Item = ({
           <span className="text-xs">⌘</span>K
         </kbd>
       )}
+    </div>
+  )
+}
+
+Item.Skeleton = function ItemSkeleton({ level }: {level?: number }) {
+  return (
+    <div
+      style={{
+        paddingLeft: level ? `${(level * 12) + 25}px` : "12px"
+      }}
+      className="flex gap-x-2 py-[3px]"
+    >
+      <Skeleton className="h-4 w-4"/>
+      <Skeleton className="h-4 w-[30%]"/>
     </div>
   )
 }
