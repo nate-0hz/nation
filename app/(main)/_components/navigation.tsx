@@ -4,6 +4,7 @@ import {
   ChevronsLeft,
   MenuIcon,
   PlusCircle,
+  Plus,
   Search,
   Settings,
 } from "lucide-react";
@@ -155,9 +156,11 @@ export const Navigation = () => {
           <Item label="Settings" icon={Settings} onClick={() => {}} />
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
-        <div className="mt-4"></div>
-        <DocumentList />
-        {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
+        <div className="mt-4">
+          <DocumentList />
+          <Item label="Add a page" onClick={handleCreate} icon={Plus} />
+          {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
+        </div>
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
