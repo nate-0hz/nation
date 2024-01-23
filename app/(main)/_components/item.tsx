@@ -38,7 +38,7 @@ interface ItemProps {
   level?: number;
   onExpand?: () => void;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   icon: LucideIcon;
   expanded?: boolean; // Add the expanded property
 };

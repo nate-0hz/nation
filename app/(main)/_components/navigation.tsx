@@ -7,23 +7,31 @@ import {
   Plus,
   Search,
   Settings,
+  Trash,
 } from "lucide-react";
 
 import { ElementRef, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { useMediaQuery } from "usehooks-ts";
+import { useMutation } from "convex/react";
 
 import { usePathname } from "next/navigation";
 
 /* because sidebar is manually draggable, not east to cater for with Tailwind
  * use of useMediaQuery hook from usehooks-ts to detect screen size */
-import { useMediaQuery } from "usehooks-ts";
 
 import { cn } from "@/lib/utils";
-import { UserItem } from "./user-item";
-import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@/components/ui/popover';
+
+import { UserItem } from "./user-item";
 import { Item } from "./item";
-import { toast } from "sonner";
 import { DocumentList } from "./document-list";
+import { TrashBox } from "./trash-box";
 
 export const Navigation = () => {
   // pathname will be used to auto-collapse sidebar on mobile, as it takes up the full screen
@@ -159,8 +167,18 @@ export const Navigation = () => {
         <div className="mt-4">
           <DocumentList />
           <Item label="Add a page" onClick={handleCreate} icon={Plus} />
-          {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
+          <Popover>
+            <PopoverTrigger className="w-full mt-4">
+              <Item label="Trash" icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent
+              className="p-0 w-72"
+              side={isMobile ? "bottom" : "right"}>
+                <TrashBox />
+            </PopoverContent>
+          </Popover>
         </div>
+          {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
