@@ -1,7 +1,5 @@
 "use client"
 
-import { Doc, Id } from "@/convex/_generated/dataModel";
-
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQuery } from "convex/react";
