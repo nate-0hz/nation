@@ -9,16 +9,13 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
-
+import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
+/* because sidebar is manually draggable, not easy to cater for with Tailwind
+ * use of useMediaQuery hook from usehooks-ts to detect screen size */
 import { useMediaQuery } from "usehooks-ts";
 import { useMutation } from "convex/react";
-
-import { usePathname } from "next/navigation";
-
-/* because sidebar is manually draggable, not east to cater for with Tailwind
- * use of useMediaQuery hook from usehooks-ts to detect screen size */
+import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
@@ -26,16 +23,19 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings"
 
 import { UserItem } from "./user-item";
 import { Item } from "./item";
 import { DocumentList } from "./document-list";
 import { TrashBox } from "./trash-box";
 
+
 export const Navigation = () => {
   // pathname will be used to auto-collapse sidebar on mobile, as it takes up the full screen
+  const settings = useSettings();
   const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -163,8 +163,8 @@ export const Navigation = () => {
         <div>
           <UserItem />
           <Item label="Search" icon={Search} isSearch onClick={search.onOpen} />
-          <Item label="Settings" icon={Settings} onClick={() => {}} />
-          <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
+          <Item label="Settings" icon={Settings} onClick={(settings as any).onOpen} />
+          <Item label="New page" icon={PlusCircle} onClick={handleCreate} />
         </div>
         <div className="mt-4">
           <DocumentList />
@@ -175,12 +175,13 @@ export const Navigation = () => {
             </PopoverTrigger>
             <PopoverContent
               className="p-0 w-72"
-              side={isMobile ? "bottom" : "right"}>
-                <TrashBox />
+              side={isMobile ? "bottom" : "right"}
+            >
+              <TrashBox />
             </PopoverContent>
           </Popover>
         </div>
-          {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
+        {/* this div is used to create the visible border, indicating the possibility of a draggable area on the sidebar */}
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}

@@ -1,15 +1,18 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from '@/components/providers/theme-provider'
-import { ConvexClientProvider } from '@/components/providers/convex-provider'
-import { Toaster } from 'sonner'
+import { Toaster } from "sonner";
+import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 
-const inter = Inter({ subsets: ['latin'] })
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ConvexClientProvider } from "@/components/providers/convex-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
+
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Nation',
-  description: 'Better, faster work with Nation',
+  title: "Nation",
+  description: "Better, faster work with Nation",
   icons: {
     icon: [
       {
@@ -22,14 +25,14 @@ export const metadata: Metadata = {
         url: "/natepicone-favicon.png",
         href: "/natepicone-favicon.png",
       },
-    ]
-  }
-}
+    ],
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -46,10 +49,11 @@ export default function RootLayout({
             storageKey="nation-theme"
           >
             <Toaster position="bottom-center" />
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
       </body>
     </html>
-  )
+  );
 }
