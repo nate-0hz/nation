@@ -13,7 +13,7 @@ import {
 
 interface IconPickerProps {
   onChange: (icon: string) => void;
-  children: React.ComponentElement.Node;
+  children: React.ReactNode;
   asChild?: boolean;
 };
 
