@@ -4,7 +4,8 @@
 import { useTheme } from "next-themes";
 import {
   BlockNoteEditor,
-  PartialBlock
+  PartialBlock,
+  BlockSchemaFromSpecs,
 } from "@blocknote/core";
 
 import {
@@ -38,14 +39,26 @@ const Editor = ({
     return response.url
   }
 
+  function isBlockSchemaFromSpecsArray(obj: any): obj is BlockSchemaFromSpecs<{obj: any}>[] {
+    // Implement your type checking logic here
+    // For example, check if obj is an array and if its elements have certain properties
+    return Array.isArray(obj) && obj.every(item => item && item.paragraph && item.paragraph.config);
+  }
+  
+  const parsedContent = initialContent ? JSON.parse(initialContent) : undefined;
+  
+  if (parsedContent && !isBlockSchemaFromSpecsArray(parsedContent)) {
+    throw new Error('Invalid initial content');
+  }
+  
   const editor: BlockNoteEditor = useBlockNote({
     editable,
-    initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock[] : undefined,
+    initialContent: parsedContent,
     onEditorContentChange: (editor) => {
       onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
     },
     uploadFile: handleUpload
-  })
+  });
 
   return (
     <div>
