@@ -8,7 +8,7 @@ export default {
     //   applicationID: "convex",
     // }
     {
-      domain: "https://useful-warbler-621.convex.cloud",
+      domain: "https://enchanted-mastodon-62.convex.cloud",
       applicationID: "convex",
     }
   ]
